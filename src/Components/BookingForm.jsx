@@ -150,7 +150,7 @@ function BookingForm() {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Hotel Image upload
+                Hotel Image Upload
               </label>
               <div className="mt-2">
                 <input

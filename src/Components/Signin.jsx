@@ -9,11 +9,20 @@ function Signin() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem('user',JSON.stringify({name:"rajendra",phone:"6378852898"}))
+    // console.log(formData);
     //api
-    console.log(formData);
+    const response = await fetch("http://localhost:8000/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const jsonData = await response.json();
+    localStorage.setItem("user", JSON.stringify(jsonData.data));
+    alert(jsonData.message);
   };
   return (
     <>
@@ -63,14 +72,6 @@ function Signin() {
                 >
                   Password
                 </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -97,10 +98,10 @@ function Signin() {
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
             <a
-              href="#"
+              href="http://localhost:5173/signup"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Start a 14 day free trial
+              Sign up
             </a>
           </p>
         </div>
