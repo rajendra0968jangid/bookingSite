@@ -11,6 +11,7 @@ function Signin() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem('user',JSON.stringify({name:"rajendra",phone:"6378852898"}))
     //api
     console.log(formData);
   };

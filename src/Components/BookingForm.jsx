@@ -3,35 +3,37 @@ import { useState } from "react";
 function BookingForm() {
   let [formData, setFormData] = useState({});
   const handleChange = (e) => {
-    const { name, value,files } = e.target;
-    setFormData((previousData)=>({
-        ...previousData,[name]:(name === "hotelimage")?files[0]:value
-    }))
+    const { name, value, files } = e.target;
+    setFormData((previousData) => ({
+      ...previousData,
+      [name]: name === "hotelimage" ? files[0] : value,
+    }));
   };
-//   const handleFile = (e)=>{
-//     const {name,files} = e.target;
-//     setFormData((previousData)=>({
-//         ...previousData,[name]:files[0]
-//     }))
-//   }
-  const handleSubmit =async (e)=>{
+  //   const handleFile = (e)=>{
+  //     const {name,files} = e.target;
+  //     setFormData((previousData)=>({
+  //         ...previousData,[name]:files[0]
+  //     }))
+  //   }
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     //api
     const formD = new FormData();
-    formD.append("hotelname",formData.hotelname)
-    formD.append("hotelphone",formData.hotelphone)
-    formD.append("hotelemail",formData.hotelemail)
-    formD.append("hotellocation",formData.hotellocation)
-    formD.append("hotelrent",formData.hotelrent)
-    formD.append("hotelimage",formData.hotelimage)
-    const response = await fetch("http://localhost:8000/bookingform",{
-        method:"post",
-        body:formD
-    })
+    formD.append("hotelname", formData.hotelname);
+    formD.append("hotelphone", formData.hotelphone);
+    formD.append("hotelemail", formData.hotelemail);
+    formD.append("hotellocation", formData.hotellocation);
+    formD.append("hotelrent", formData.hotelrent);
+    formD.append("hotelimage", formData.hotelimage);
+    const response = await fetch("http://localhost:8000/bookingform", {
+      method: "post",
+      body: formD,
+    });
     const jsonData = await response.json();
-    console.log(jsonData)
-  }
+    console.log(jsonData);
+    alert("form submitted successfully");
+  };
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -46,7 +48,12 @@ function BookingForm() {
           </h2>
         </div>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <div>
               <label
                 htmlFor="name"
