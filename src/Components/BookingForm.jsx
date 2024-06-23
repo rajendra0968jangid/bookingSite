@@ -26,7 +26,7 @@ function BookingForm() {
     formD.append("hotellocation", formData.hotellocation);
     formD.append("hotelrent", formData.hotelrent);
     formD.append("hotelimage", formData.hotelimage);
-    const response = await fetch("http://192.168.137.168:8000/bookingform", {
+    const response = await fetch("http://localhost:8000/bookingform", {
       method: "post",
       body: formD,
     });
