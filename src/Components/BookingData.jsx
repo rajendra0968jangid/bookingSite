@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Fotter from "./Fotter";
+import { useNavigate } from "react-router-dom";
 
 export default function BookingData() {
+  const navigate = useNavigate();
   let [formData, setFormData] = useState([]);
   let [check, setCheck] = useState(false);
   const [userData, setUserData] = useState(
@@ -34,6 +36,9 @@ export default function BookingData() {
     setCheck(!check);
     alert(jsonresponse.message);
   };
+  const handleRender = async(id)=>{
+navigate(`/bookingupdate/${id}`)
+  }
 
   return (
     <>
@@ -105,7 +110,8 @@ export default function BookingData() {
                           />
                         </td>
                         <td className="py-3 px-1 border-b border-gray-200">
-                          <button className="rounded-md bg-cyan-700 text-white size-12">
+                          <button className="rounded-md bg-cyan-700 text-white size-12"
+                          onClick={()=>handleRender(item._id)}>
                             Edit
                           </button>
                         </td>

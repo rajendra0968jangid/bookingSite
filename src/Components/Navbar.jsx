@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [userData, setUserData] = useState(
@@ -48,12 +48,12 @@ function Navbar() {
             </div>
           ) : (
             <div className="hidden md:flex space-x-4">
-              <a href="http://localhost:5173/signup" className="text-white">
+              <Link to="http://localhost:5173/signup" className="text-white">
                 Signup
-              </a>
-              <a href="http://localhost:5173/signin" className="text-white">
+              </Link>
+              <Link to="http://localhost:5173/signin" className="text-white">
                 Signin
-              </a>
+              </Link>
             </div>
           )}
           <div className="md:hidden">
