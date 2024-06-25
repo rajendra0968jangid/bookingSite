@@ -7,11 +7,15 @@ import Slidebar from "./Components/Slidebar";
 import BookingForm from "./Components/BookingForm";
 import BookingData from "./Components/BookingData";
 import BookingUpdate from "./Components/BookingUpdate";
+import Home from "./Components/Home";
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route path="/" element={<Home />} />
+
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/bookingform" element={<BookingForm />} />

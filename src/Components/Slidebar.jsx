@@ -1,7 +1,7 @@
 function Slidebar() {
   return (
     <>
-      <div className="">
+      <div className="my-[60px]">
         <img
           src="/download.png"
           alt="Rotating Image"
