@@ -25,9 +25,14 @@ function Signin() {
       body: JSON.stringify(formData),
     });
     const jsonData = await response.json();
-    localStorage.setItem("user", JSON.stringify(jsonData.data));
-    // alert(jsonData.message);
-    navigate("/");
+    if(jsonData.data != null){
+      localStorage.setItem("user", JSON.stringify(jsonData.data));
+      navigate("/");
+      alert(jsonData.message);
+    }
+    else{
+      alert("Check credentials")
+    }
   };
   return (
     <>

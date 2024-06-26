@@ -1,6 +1,21 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import Fotter from "./Fotter";
+// import { Formik, Form, Field, ErrorMessage } from "formik";
+// import * as Yup from "yup";
+
+// const validationSchema = Yup.object().shape({
+//   username: Yup.string().required("Username is required"),
+//   email: Yup.string()
+//     .email("Invalid email format")
+//     .required("Email is required"),
+//   phone: Yup.string()
+//     .required("Phone is required")
+//     .matches(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+//   password: Yup.string()
+//     .min(6, "Password must be at least 6 characters")
+//     .required("Password is required"),
+// });
 
 function Signup() {
   let [formData, setFormData] = useState({});
@@ -14,21 +29,24 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    //api
-    const response = await fetch("http://localhost:8000/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const jsonData = await response.json();
-    alert(jsonData.message);
+    //api start
+    try {
+      const response = await fetch("http://localhost:8000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const jsonData = await response.json();
+      alert(jsonData.message);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   return (
     <>
-      <div className="grid grid-rows-[40px]"> 
+      <div className="grid grid-rows-[40px]">
         <div>
           <Navbar />
         </div>
@@ -45,12 +63,7 @@ function Signup() {
               </h2>
             </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form
-                className="space-y-6"
-                action="#"
-                method="POST"
-                onSubmit={handleSubmit}
-              >
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label
                     htmlFor="name"
@@ -143,6 +156,7 @@ function Signup() {
                   </button>
                 </div>
               </form>
+
               <p className="mt-10 text-center text-sm text-gray-500">
                 Not a member?
                 <a
@@ -156,7 +170,7 @@ function Signup() {
           </div>
         </div>
         <div>
-          <Fotter/>
+          <Fotter />
         </div>
       </div>
     </>
