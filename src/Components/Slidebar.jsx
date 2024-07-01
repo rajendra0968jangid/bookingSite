@@ -1,13 +1,14 @@
+import { Carousel } from "flowbite-react";
+
 function Slidebar() {
   return (
     <>
-      <div className="my-[60px]">
-        <img
-          src="/download.png"
-          alt="Rotating Image"
-          className="w-[100%] h-[400px]"
-          id="rotating-image"
-        />
+      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+        <Carousel>
+          <img src="/download.png" alt="..." />
+          <img src="/download (1).png" alt="..." />
+          <img src="/download-_1_.png" alt="..." />
+        </Carousel>
       </div>
     </>
   );
