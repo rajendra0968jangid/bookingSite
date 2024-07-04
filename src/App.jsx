@@ -8,13 +8,15 @@ import BookingForm from "./Components/BookingForm";
 import BookingData from "./Components/BookingData";
 import BookingUpdate from "./Components/BookingUpdate";
 import Home from "./Components/Home";
+import AddTodo from "./Components/AddTodo";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home data={{name:"rajendra"}}/>} />
+          <Route path="/todo" element={<AddTodo />} />
 
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
